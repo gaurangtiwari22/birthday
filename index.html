@@ -225,6 +225,57 @@ border:none;
 outline:none;
 text-align:center;
 }
+<!-- ================= DIGITAL CARD SHUFFLE ================= -->
+
+<section id="card-section" style="padding:100px 20px;text-align:center;">
+<h2 style="font-size:2.5rem;margin-bottom:50px;">🃏 Digital Fate Cards 🃏</h2>
+
+<div class="card-container">
+
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">Pick Me</div>
+<div class="card-back"></div>
+</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">Pick Me</div>
+<div class="card-back"></div>
+</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">Pick Me</div>
+<div class="card-back"></div>
+</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">Pick Me</div>
+<div class="card-back"></div>
+</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">Pick Me</div>
+<div class="card-back"></div>
+</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front">Pick Me</div>
+<div class="card-back"></div>
+</div>
+</div>
+
+</div>
+</section>
 
 /* Balloons */
 .balloon{
@@ -424,6 +475,58 @@ document.body.appendChild(c);
 setTimeout(()=>c.remove(),3000);
 }
 }
+.card-container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:40px;
+}
+
+.card{
+width:220px;
+height:320px;
+perspective:1000px;
+cursor:pointer;
+}
+
+.card-inner{
+position:relative;
+width:100%;
+height:100%;
+transition:transform 0.8s;
+transform-style:preserve-3d;
+}
+
+.card.flipped .card-inner{
+transform:rotateY(180deg);
+}
+
+.card-front, .card-back{
+position:absolute;
+width:100%;
+height:100%;
+border-radius:20px;
+backface-visibility:hidden;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+font-weight:bold;
+font-size:1.1rem;
+text-align:center;
+}
+
+.card-front{
+background:linear-gradient(135deg,#ff00cc,#7b00ff);
+box-shadow:0 0 30px #ff00cc;
+}
+
+.card-back{
+background:rgba(0,0,0,0.8);
+backdrop-filter:blur(20px);
+transform:rotateY(180deg);
+box-shadow:0 0 40px #00ffff;
+}
 
 /* Fireworks Explosion */
 function fireworks(){
@@ -450,8 +553,39 @@ setTimeout(()=>burst.remove(),1000);
 },j*300);
 }
 }
+let clickCount=0;
 
+const cardsData=[
+"😈 Roast Card<br><br>You have genuinely the worst taste in men 😂 like… impressive level bad",
+"🤭 Truth Card<br><br>You act confident and strong all the time… but at the end of the day, you carry the softest heart ❤️❤️",
+"🧨 Dare Card<br><br>Text me on WhatsApp right now and I’ll personally assign your dare 😈😈",
+"🍀 Lucky Card<br><br>Official declaration: You are permanently and non-negotiably my best friend. 🥰🥰",
+"💖 Compliment Card<br><br>You have that main character energy without even trying ❤️❤️",
+"🎭 Wild Card<br><br>Breaking News: You are illegally charming 😍😍"
+];
+
+function flipCard(card){
+if(card.classList.contains("flipped")) return;
+
+clickCount++;
+
+let content;
+
+if(clickCount===1 || clickCount%2===0){
+    content=cardsData[2]; // Dare Card first and every 2nd click
+}else{
+    let randomIndex=Math.floor(Math.random()*cardsData.length);
+    while(randomIndex===2){
+        randomIndex=Math.floor(Math.random()*cardsData.length);
+    }
+    content=cardsData[randomIndex];
+}
+
+card.querySelector(".card-back").innerHTML=content;
+card.classList.add("flipped");
+}
 </script>
 
 </body>
 </html>
+
