@@ -336,7 +336,66 @@ Signed with respect & appreciation,<br>
 Gaurang
 </div>
 </div>
+/* ===== RESPONSIVE DESIGN ===== */
 
+@media (max-width: 1024px){
+    .cards-grid{
+        grid-template-columns: repeat(2,1fr);
+        gap:40px;
+    }
+}
+
+@media (max-width: 768px){
+
+    nav{
+        gap:10px;
+        font-size:0.8rem;
+        padding:10px;
+        flex-wrap:wrap;
+    }
+
+    section{
+        padding:80px 20px;
+    }
+
+    .hero h1{
+        font-size:2.2rem;
+    }
+
+    .name-glow{
+        font-size:3rem;
+        top:85%;
+    }
+
+    .slider{
+        width:95%;
+    }
+
+    .cards-grid{
+        grid-template-columns: 1fr;
+        gap:30px;
+    }
+
+    .mystery-card{
+        height:280px;
+    }
+
+    #certificate{
+        padding:30px 20px;
+    }
+
+    .cert-name{
+        font-size:1.8rem;
+    }
+
+    .cards-heading{
+        font-size:1.8rem;
+    }
+
+    .cards-subtext{
+        font-size:0.95rem;
+    }
+}
 </section>
 
 <script>
@@ -672,6 +731,7 @@ currentOpen = card;
 
 </body>
 </html>
+
 
 
 
