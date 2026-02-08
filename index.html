@@ -14,68 +14,6 @@ color:white;
 overflow-x:hidden;
 }
 
-/* ====== SUBTLE PREMIUM ADDITIONS (DOES NOT CHANGE YOUR BASE) ====== */
-
-/* soft animated particles */
-.particle{
-position:fixed;
-width:3px;
-height:3px;
-background:white;
-border-radius:50%;
-opacity:0.4;
-pointer-events:none;
-animation:particleFloat linear infinite;
-}
-
-@keyframes particleFloat{
-from{transform:translateY(0);}
-to{transform:translateY(-100vh);}
-}
-
-/* soft section fade in */
-section{
-animation:fadeInSection 1.2s ease;
-}
-
-@keyframes fadeInSection{
-from{opacity:0;transform:translateY(30px);}
-to{opacity:1;transform:translateY(0);}
-}
-
-/* subtle heading glow enhancement */
-h2{
-text-shadow:0 0 15px rgba(255,0,200,0.4);
-}
-
-/* subtle hover lift for cards */
-.reason-card:hover{
-transform:translateY(-8px);
-box-shadow:0 0 25px rgba(255,0,200,0.5);
-}
-
-/* smooth image hover */
-.slide img:hover{
-transform:scale(1.05);
-transition:0.4s ease;
-}
-
-/* smooth input focus */
-input:focus{
-box-shadow:0 0 15px #ff00cc;
-}
-
-/* premium button glow spread */
-button{
-box-shadow:0 0 10px rgba(255,0,200,0.5);
-}
-
-button:hover{
-box-shadow:0 0 30px #ff00cc,0 0 50px #00ffff;
-}
-
-/* ===== ORIGINAL CODE BELOW (UNCHANGED) ===== */
-
 /* Navbar */
 nav{
 position:fixed;
@@ -256,34 +194,25 @@ animation:fall 3s linear forwards;
 </nav>
 
 <section id="home" class="hero">
-<div class="section-box">
 <div class="name-glow">AISHWARYAA</div>
 <h1>🎉 HAPPY BIRTHDAY AISHWARYA 🎂</h1>
 <p>A day filled with love & joy ✨</p>
 <button onclick="fireworks()">Start Celebration</button>
-</div>
 </section>
-
-<div class="divider"></div>
 
 <section id="gallery">
-<div class="section-box">
 <h2>Beautiful Moments</h2>
 <div class="slider">
-<div class="slide"><img src="Images/image1.png"></div>
-<div class="slide"><img src="Images/image2.png"></div>
-<div class="slide"><img src="Images/image3.png"></div>
-<div class="slide"><img src="Images/image4.png"></div>
-<div class="slide"><img src="Images/image5.png"></div>
-<div class="slide"><img src="Images/image6.png"></div>
-</div>
+<div class="slide"><img src="images/image1.png"></div>
+<div class="slide"><img src="images/image2.png"></div>
+<div class="slide"><img src="images/image3.png"></div>
+<div class="slide"><img src="images/image4.png"></div>
+<div class="slide"><img src="images/image5.png"></div>
+<div class="slide"><img src="images/image6.png"></div>
 </div>
 </section>
 
-<div class="divider"></div>
-
 <section id="reasons">
-<div class="section-box">
 <h2>✨ Reasons You're Special ✨</h2>
 <div class="reasons-container">
 <div class="reason-card">💖 You always care for people genuinely.</div>
@@ -293,13 +222,9 @@ animation:fall 3s linear forwards;
 <div class="reason-card">🌸 Pure heart and positive vibes.</div>
 <div class="reason-card">🔥 One of the most important friends in my life.(And haa ek hot friend honi bhi zaruri haina 🤣🤣)</div>
 </div>
-</div>
 </section>
 
-<div class="divider"></div>
-
 <section id="secret">
-<div class="section-box">
 <h2>Secret Message</h2>
 <input type="password" id="pass" placeholder="Enter Code">
 <button onclick="unlock()">Unlock</button>
@@ -313,35 +238,46 @@ Aur bata website kaisi lagi??? mujhe batana haa zaroor ki kaisi lagi, pics bhi s
 Chal ab zyada time waste nahi karta teraa, maze se enjoy kar and haa mujhse roz baat kiya kar 😂😂 (sirf occasionally nahi).<br><br>
 Happiest Birthdayy Once Again 🥳🥳🎉🎉🎊🎊
 </div>
-</div>
 </section>
 
 <script>
 
-/* subtle floating particles */
-for(let i=0;i<40;i++){
-let p=document.createElement("div");
-p.className="particle";
-p.style.left=Math.random()*100+"vw";
-p.style.bottom=Math.random()*100+"vh";
-p.style.animationDuration=(10+Math.random()*20)+"s";
-document.body.appendChild(p);
-}
-
-/* ===== ORIGINAL SCRIPT BELOW (UNCHANGED) ===== */
-
 /* Balloons */
 function createBalloons(){
-for(let i=0;i<25;i++){
+for(let i=0;i<200;i++){
 let b=document.createElement("div");
 b.classList.add("balloon");
 b.style.left=Math.random()*100+"%";
-b.style.background="hsl("+Math.random()*360+",70%,60%)";
-b.style.animationDuration=(6+Math.random()*6)+"s";
+b.style.width=(20+Math.random()*40)+"px";
+b.style.height=(30+Math.random()*60)+"px";
+b.style.background="hsl("+Math.random()*360+",80%,60%)";
+b.style.animationDuration=(4+Math.random()*6)+"s";
 document.body.appendChild(b);
 }
 }
 createBalloons();
+
+/* Permanent Fireworks */
+setInterval(()=>{
+for(let i=0;i<80;i++){
+let f=document.createElement("div");
+f.style.position="fixed";
+f.style.left=Math.random()*100+"vw";
+f.style.top=Math.random()*100+"vh";
+f.style.width="5px";
+f.style.height="5px";
+f.style.background="hsl("+Math.random()*360+",100%,50%)";
+f.style.borderRadius="50%";
+f.style.pointerEvents="none";
+f.style.transition="all 1.2s ease-out";
+document.body.appendChild(f);
+setTimeout(()=>{
+f.style.transform=`translate(${(Math.random()-0.5)*400}px, ${(Math.random()-0.5)*400}px)`;
+f.style.opacity="0";
+},20);
+setTimeout(()=>f.remove(),1200);
+}
+},1500);
 
 /* Slider */
 let slideIndex=0;
@@ -388,75 +324,8 @@ setTimeout(()=>c.remove(),3000);
 }
 }
 
-/* Fireworks */
+/* Fireworks Explosion */
 function fireworks(){
-for(let i=0;i<150;i++){
-let f=document.createElement("div");
-f.style.position="fixed";
-f.style.left="50%";
-f.style.top="50%";
-f.style.width="6px";
-f.style.height="6px";
-f.style.background="hsl("+Math.random()*360+",100%,50%)";
-f.style.borderRadius="50%";
-f.style.pointerEvents="none";
-f.style.transition="all 1.5s ease-out";
-document.body.appendChild(f);
-setTimeout(()=>{
-f.style.transform=`translate(${(Math.random()-0.5)*600}px, ${(Math.random()-0.5)*600}px)`;
-f.style.opacity="0";
-},10);
-setTimeout(()=>f.remove(),1500);
-}
-}
-/* ================= EXTREME CELEBRATION MODE ================= */
-
-/* MASSIVE BALLOONS */
-function extremeBalloons(){
-for(let i=0;i<200;i++){
-let b=document.createElement("div");
-b.classList.add("balloon");
-b.style.left=Math.random()*100+"%";
-b.style.width=(20+Math.random()*40)+"px";
-b.style.height=(30+Math.random()*60)+"px";
-b.style.background="hsl("+Math.random()*360+",80%,60%)";
-b.style.animationDuration=(4+Math.random()*6)+"s";
-document.body.appendChild(b);
-}
-}
-extremeBalloons();
-
-/* PERMANENT FIREWORKS */
-function permanentFireworks(){
-setInterval(()=>{
-for(let i=0;i<60;i++){
-let f=document.createElement("div");
-f.style.position="fixed";
-f.style.left=Math.random()*100+"vw";
-f.style.top=Math.random()*100+"vh";
-f.style.width="5px";
-f.style.height="5px";
-f.style.background="hsl("+Math.random()*360+",100%,50%)";
-f.style.borderRadius="50%";
-f.style.pointerEvents="none";
-f.style.transition="all 1.2s ease-out";
-document.body.appendChild(f);
-
-setTimeout(()=>{
-f.style.transform=`translate(${(Math.random()-0.5)*400}px, ${(Math.random()-0.5)*400}px)`;
-f.style.opacity="0";
-},20);
-
-setTimeout(()=>f.remove(),1200);
-}
-},1500);
-}
-permanentFireworks();
-
-/* SCREEN EXPLOSION ON BUTTON CLICK */
-const originalFireworks = fireworks;
-fireworks = function(){
-originalFireworks();
 for(let j=0;j<5;j++){
 setTimeout(()=>{
 for(let i=0;i<200;i++){
@@ -471,20 +340,17 @@ burst.style.borderRadius="50%";
 burst.style.pointerEvents="none";
 burst.style.transition="all 1s ease-out";
 document.body.appendChild(burst);
-
 setTimeout(()=>{
 burst.style.transform=`translate(${(Math.random()-0.5)*1000}px, ${(Math.random()-0.5)*800}px)`;
 burst.style.opacity="0";
 },10);
-
 setTimeout(()=>burst.remove(),1000);
 }
 },j*300);
 }
-};
+}
+
 </script>
 
 </body>
 </html>
-
-
