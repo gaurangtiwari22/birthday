@@ -333,6 +333,180 @@ if(card!==selectedCard){card.classList.remove("flipped");}
 selectedCard.classList.toggle("flipped");
 }
 </script>
+<!-- ================= DIGITAL FATE CARDS ================= -->
+
+<style>
+#fateSection{
+padding:100px 20px;
+text-align:center;
+}
+
+.fate-heading{
+font-size:2.5rem;
+margin-bottom:20px;
+background:linear-gradient(90deg,#ff00cc,#00ffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.fate-subtext{
+max-width:800px;
+margin:0 auto 20px;
+font-size:1.1rem;
+opacity:0.9;
+}
+
+.fate-list{
+max-width:600px;
+margin:0 auto 50px;
+text-align:left;
+line-height:1.8;
+}
+
+.fate-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:40px;
+max-width:1200px;
+margin:auto;
+}
+
+.card{
+height:280px;
+perspective:1000px;
+cursor:pointer;
+}
+
+.card-inner{
+position:relative;
+width:100%;
+height:100%;
+transition:transform 0.8s;
+transform-style:preserve-3d;
+}
+
+.card.flipped .card-inner{
+transform:rotateY(180deg);
+}
+
+.card-front,.card-back{
+position:absolute;
+width:100%;
+height:100%;
+border-radius:25px;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+text-align:center;
+backface-visibility:hidden;
+color:white;
+font-weight:bold;
+box-shadow:0 20px 40px rgba(0,0,0,0.5);
+}
+
+.card-back{
+transform:rotateY(180deg);
+}
+
+.design1{background:linear-gradient(135deg,#ff6a00,#ee0979);}
+.design2{background:linear-gradient(135deg,#00c6ff,#0072ff);}
+.design3{background:linear-gradient(135deg,#7f00ff,#e100ff);}
+.design4{background:linear-gradient(135deg,#11998e,#38ef7d);}
+.design5{background:linear-gradient(135deg,#fc4a1a,#f7b733);}
+.design6{background:linear-gradient(135deg,#ff512f,#dd2476);}
+</style>
+
+<section id="fateSection">
+
+<h2 class="fate-heading">Digital Fate Cards</h2>
+
+<p class="fate-subtext">
+Following are the exclusive cards. Pick one and discover what fate has prepared for you.
+Only one card can reveal itself at a time.
+</p>
+
+<div class="fate-list">
+• 😈 Roast Card<br>
+• 🤭 Truth Card<br>
+• 🧨 Dare Card<br>
+• 🍀 Lucky Card<br>
+• 💖 Compliment Card<br>
+• 🎭 Wild Card
+</div>
+
+<div class="fate-grid">
+
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front design1">😈 Roast Card</div>
+<div class="card-back design1">
+You have genuinely the worst taste in men 😂 like… impressively bad.
+</div>
+</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front design2">🤭 Truth Card</div>
+<div class="card-back design2">
+You act confident and strong all the time… but at the end of the day, you carry the softest heart ❤️❤️
+</div>
+</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front design3">🧨 Dare Card</div>
+<div class="card-back design3">
+Text me on WhatsApp right now and I’ll personally assign your dare 😈😈
+</div>
+</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front design4">🍀 Lucky Card</div>
+<div class="card-back design4">
+Official declaration: You are permanently and non-negotiably my best friend. 🥰🥰
+</div>
+</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front design5">💖 Compliment Card</div>
+<div class="card-back design5">
+You have that main character energy without even trying ❤️❤️
+</div>
+</div>
+</div>
+
+<div class="card" onclick="flipCard(this)">
+<div class="card-inner">
+<div class="card-front design6">🎭 Wild Card</div>
+<div class="card-back design6">
+Breaking News: You are illegally charming 😍😍
+</div>
+</div>
+</div>
+
+</div>
+</section>
+
+<script>
+function flipCard(selectedCard){
+document.querySelectorAll(".card").forEach(card=>{
+if(card!==selectedCard){
+card.classList.remove("flipped");
+}
+});
+selectedCard.classList.toggle("flipped");
+}
+</script>
+
+<!-- ================= END DIGITAL FATE CARDS ================= -->
 
 </body>
 </html>
+
