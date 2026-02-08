@@ -455,182 +455,223 @@ setTimeout(()=>burst.remove(),1000);
 <!-- ================= DIGITAL FATE CARDS ================= -->
 
 <style>
+<!-- ===== DIGITAL FATE CARDS SECTION (FULL ADD-ON) ===== -->
 
-/* ===== DIGITAL FATE CARDS ===== */
+<style>
 
-#cards{
+/* SECTION */
+#cardsSection{
 min-height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
+padding:120px 40px;
 text-align:center;
-padding:100px 20px;
 }
 
-#cards h2{
-font-size:2.5rem;
-margin-bottom:10px;
+.cards-heading{
+font-size:2.8rem;
+margin-bottom:20px;
+background:linear-gradient(90deg,#ff00cc,#00ffff,#ffcc00);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
-#cards p{
-opacity:0.85;
+.cards-subtext{
+max-width:900px;
 margin-bottom:50px;
+line-height:1.7;
 font-size:1.1rem;
 }
 
-.mystery-container{
+/* GRID */
+.cards-grid{
 display:grid;
 grid-template-columns:repeat(3,1fr);
 gap:60px;
-max-width:1300px;
-width:95%;
-perspective:1500px;
+width:100%;
+max-width:1200px;
 }
 
+/* CARD */
 .mystery-card{
-height:300px;
+height:340px;
 border-radius:30px;
 cursor:pointer;
 position:relative;
 transform-style:preserve-3d;
 transition:transform 0.9s ease;
-display:flex;
-align-items:center;
-justify-content:center;
-font-weight:bold;
-font-size:1.2rem;
-color:white;
 box-shadow:0 30px 80px rgba(0,0,0,0.6);
-overflow:hidden;
 }
 
-/* Front design */
-.mystery-card::before{
-content:"🎴 Tap To Reveal 🎴";
-position:absolute;
-width:100%;
-height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:1.2rem;
-background:linear-gradient(135deg,#1f1c2c,#928dab);
-border-radius:30px;
-}
-
-/* Back side */
-.mystery-card .back{
-position:absolute;
-width:100%;
-height:100%;
-border-radius:30px;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:30px;
-transform:rotateY(180deg);
-backface-visibility:hidden;
-font-size:1.2rem;
-line-height:1.6;
-color:white;
-}
-
-/* Flip */
 .mystery-card.flipped{
 transform:rotateY(180deg);
 }
 
-/* 6 Premium Designs */
-.roast { background:linear-gradient(135deg,#ff416c,#ff4b2b); }
-.truth { background:linear-gradient(135deg,#2193b0,#6dd5ed); }
-.dare { background:linear-gradient(135deg,#cc2b5e,#753a88); }
-.lucky { background:linear-gradient(135deg,#11998e,#38ef7d); }
-.compliment { background:linear-gradient(135deg,#ff9966,#ff5e62); }
-.wild { background:linear-gradient(135deg,#fc466b,#3f5efb); }
+.card-face{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px;
+border-radius:30px;
+backface-visibility:hidden;
+font-size:1.25rem;
+font-weight:600;
+}
+
+/* FRONT */
+.card-front{
+background:linear-gradient(135deg,#ff6a00,#ee0979);
+font-size:1.4rem;
+letter-spacing:1px;
+}
+
+/* BACK DESIGNS */
+.roast{
+background:linear-gradient(135deg,#ff416c,#ff4b2b);
+}
+
+.truth{
+background:linear-gradient(135deg,#00c6ff,#0072ff);
+}
+
+.dare{
+background:linear-gradient(135deg,#cc00ff,#6600ff);
+}
+
+.lucky{
+background:linear-gradient(135deg,#11998e,#38ef7d);
+}
+
+.compliment{
+background:linear-gradient(135deg,#ff9966,#ff5e62);
+}
+
+.wild{
+background:linear-gradient(135deg,#f7971e,#ffd200);
+}
+
+.card-back{
+transform:rotateY(180deg);
+color:white;
+}
 
 </style>
 
-<section id="cards">
-<h2>🎴 Digital Fate Cards</h2>
-<p>Pick one card… but remember — fate chooses you back 👀</p>
+<section id="cardsSection">
 
-<div class="mystery-container">
-  <div class="mystery-card" onclick="flipCard(this)"></div>
-  <div class="mystery-card" onclick="flipCard(this)"></div>
-  <div class="mystery-card" onclick="flipCard(this)"></div>
-  <div class="mystery-card" onclick="flipCard(this)"></div>
-  <div class="mystery-card" onclick="flipCard(this)"></div>
-  <div class="mystery-card" onclick="flipCard(this)"></div>
+<div class="cards-heading">🎴 DIGITAL FATE CARDS 🎴</div>
+
+<div class="cards-subtext">
+Pick a card and let destiny decide what you receive.<br><br>
+Available Cards:<br>
+• 😈 Roast Card<br>
+• 🤭 Truth Card<br>
+• 🧨 Dare Card<br>
+• 🍀 Lucky Card<br>
+• 💖 Compliment Card<br>
+• 🎭 Wild Card
+</div>
+
+<div class="cards-grid">
+
+<div class="mystery-card" onclick="revealCard(this)">
+<div class="card-face card-front">🎴 Tap To Reveal 🎴</div>
+</div>
+
+<div class="mystery-card" onclick="revealCard(this)">
+<div class="card-face card-front">🎴 Tap To Reveal 🎴</div>
+</div>
+
+<div class="mystery-card" onclick="revealCard(this)">
+<div class="card-face card-front">🎴 Tap To Reveal 🎴</div>
+</div>
+
+<div class="mystery-card" onclick="revealCard(this)">
+<div class="card-face card-front">🎴 Tap To Reveal 🎴</div>
+</div>
+
+<div class="mystery-card" onclick="revealCard(this)">
+<div class="card-face card-front">🎴 Tap To Reveal 🎴</div>
+</div>
+
+<div class="mystery-card" onclick="revealCard(this)">
+<div class="card-face card-front">🎴 Tap To Reveal 🎴</div>
+</div>
+
 </div>
 </section>
 
 <script>
 
-/* ===== DIGITAL FATE CARDS LOGIC ===== */
+let firstClick = true;
+let currentOpen = null;
 
-const cardData = [
+const cardPool = [
 {
 class:"roast",
-text:"😈 Roast Card <br><br> You have genuinely the worst taste in men 😂 like… impressive level bad"
+text:"😈 Roast Card<br><br>You have genuinely the worst taste in men 😂 like… impressive level bad"
 },
 {
 class:"truth",
-text:"🤭 Truth Card <br><br> You act confident and strong all the time… but at the end of the day, you carry the softest heart ❤️❤️"
+text:"🤭 Truth Card<br><br>You act confident and strong all the time… but at the end of the day, you carry the softest heart ❤️❤️"
 },
 {
 class:"dare",
-text:"🧨 Dare Card <br><br> Text me on WhatsApp right now and I’ll personally assign your dare 😈😈"
+text:"🧨 Dare Card<br><br>Text me on WhatsApp right now and I’ll personally assign your dare 😈😈"
 },
 {
 class:"lucky",
-text:"🍀 Lucky Card <br><br> Official declaration: You are permanently and non-negotiably my best friend. 🥰🥰"
+text:"🍀 Lucky Card<br><br>Official declaration: You are permanently and non-negotiably my best friend. 🥰🥰"
 },
 {
 class:"compliment",
-text:"💖 Compliment Card <br><br> You have that main character energy without even trying ❤️❤️"
+text:"💖 Compliment Card<br><br>You have that main character energy without even trying ❤️❤️"
 },
 {
 class:"wild",
-text:"🎭 Wild Card <br><br> Breaking News: You are illegally charming 😍😍"
+text:"🎭 Wild Card<br><br>Breaking News: You are illegally charming 😍😍"
 }
 ];
 
-let firstClick = true;
-let openedCard = null;
+function revealCard(card){
 
-function flipCard(card){
-
-if(openedCard){
-openedCard.classList.remove("flipped");
-openedCard.innerHTML="";
+if(currentOpen && currentOpen !== card){
+currentOpen.classList.remove("flipped");
+currentOpen.innerHTML = `<div class="card-face card-front">🎴 Tap To Reveal 🎴</div>`;
 }
 
 let selected;
 
 if(firstClick){
-selected = cardData[2]; // First click always Dare
+selected = cardPool.find(c => c.class === "dare");
 firstClick = false;
 }else{
-selected = cardData[Math.floor(Math.random()*cardData.length)];
+selected = cardPool[Math.floor(Math.random() * cardPool.length)];
 }
 
-card.innerHTML = `<div class="back ${selected.class}">${selected.text}</div>`;
-card.classList.add("flipped");
-openedCard = card;
+card.innerHTML = `
+<div class="card-face card-front">🎴 Tap To Reveal 🎴</div>
+<div class="card-face card-back ${selected.class}">
+${selected.text}
+</div>
+`;
 
-setTimeout(()=>{
-card.classList.remove("flipped");
-card.innerHTML="";
-},4000);
+card.classList.add("flipped");
+currentOpen = card;
 }
 
 </script>
 
-<!-- ================= END DIGITAL FATE CARDS ================= -->
+<!-- ===== END OF DIGITAL FATE CARDS ===== -->
 
 </body>
 </html>
+
 
 
