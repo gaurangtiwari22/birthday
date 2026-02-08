@@ -12,27 +12,12 @@ body{
 background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
 color:white;
 overflow-x:hidden;
-perspective:1200px;
-}
-
-/* ===== OFFICIAL BANNER ===== */
-.event-banner{
-position:fixed;
-top:0;
-width:100%;
-text-align:center;
-padding:8px;
-background:linear-gradient(90deg,#ff00cc,#00ffff);
-font-weight:bold;
-letter-spacing:2px;
-z-index:2000;
-font-size:0.8rem;
 }
 
 /* Navbar */
 nav{
 position:fixed;
-top:35px;
+top:0;
 width:100%;
 display:flex;
 justify-content:center;
@@ -56,27 +41,11 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:80px 20px;
+padding:60px 20px;
 position:relative;
-transform-style:preserve-3d;
-transition:transform 0.2s ease;
 }
 
-/* Floating Emojis */
-.floating-emoji{
-position:fixed;
-font-size:20px;
-animation:floatEmoji 15s linear infinite;
-opacity:0.4;
-pointer-events:none;
-}
-
-@keyframes floatEmoji{
-from{transform:translateY(100vh);}
-to{transform:translateY(-120vh);}
-}
-
-/* Name Glow */
+/* Name Glow Background - Moved More Down */
 .name-glow {
 position:absolute;
 top:80%;
@@ -85,7 +54,11 @@ transform:translate(-50%,-50%);
 font-size:6rem;
 font-weight:bold;
 color:rgba(255,255,255,0.04);
-text-shadow:0 0 30px #ff00cc,0 0 60px #ff00cc,0 0 100px #00ffff;
+text-shadow:
+0 0 30px #ff00cc,
+0 0 60px #ff00cc,
+0 0 100px #00ffff,
+0 0 150px #00ffff;
 animation:floatName 6s ease-in-out infinite alternate;
 pointer-events:none;
 z-index:-1;
@@ -122,9 +95,17 @@ box-shadow:0 0 20px #ff00cc;
 }
 
 /* Gallery */
-.slider{position:relative;width:80%;max-width:600px;overflow:hidden;}
+.slider{
+position:relative;
+width:80%;
+max-width:600px;
+overflow:hidden;
+}
 .slide{display:none;}
-.slide img{width:100%;border-radius:15px;}
+.slide img{
+width:100%;
+border-radius:15px;
+}
 
 /* Reasons */
 .reasons-container{
@@ -143,8 +124,10 @@ opacity:0;
 transform:translateY(40px);
 transition:all 0.8s ease;
 }
-.reason-card.show{opacity:1;transform:translateY(0);}
-.reason-card:hover{transform:scale(1.05);}
+.reason-card.show{
+opacity:1;
+transform:translateY(0);
+}
 
 /* Secret Message */
 #secretMessage{
@@ -160,7 +143,90 @@ backdrop-filter:blur(10px);
 text-align:left;
 }
 
-/* Balloons (Clickable) */
+/* ===== PREMIUM CERTIFICATE ===== */
+
+#certificate{
+display:none;
+margin-top:40px;
+padding:50px 40px;
+max-width:900px;
+background:linear-gradient(145deg,#111,#1c1c1c);
+border-radius:25px;
+position:relative;
+color:#fff;
+text-align:center;
+box-shadow:0 0 60px rgba(255,215,0,0.3);
+overflow:hidden;
+animation:fadeCert 1.2s ease forwards;
+}
+
+@keyframes fadeCert{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+#certificate::before{
+content:"";
+position:absolute;
+inset:0;
+padding:3px;
+border-radius:25px;
+background:linear-gradient(45deg,#ffd700,#fff5b7,#ffd700,#fff5b7);
+background-size:300% 300%;
+animation:goldMove 6s linear infinite;
+-webkit-mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+}
+
+@keyframes goldMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.cert-title{
+font-size:1.8rem;
+letter-spacing:3px;
+color:#ffd700;
+margin-bottom:30px;
+}
+
+.cert-name{
+font-size:2.8rem;
+font-weight:bold;
+background:linear-gradient(90deg,#ffd700,#fff,#ffd700);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin:20px 0;
+}
+
+.cert-text{
+font-size:1.1rem;
+line-height:1.8;
+color:#e0e0e0;
+margin-top:20px;
+}
+
+.cert-footer{
+margin-top:40px;
+font-size:0.9rem;
+opacity:0.7;
+letter-spacing:1px;
+}
+
+input{
+margin-top:15px;
+padding:10px 20px;
+border-radius:20px;
+border:none;
+outline:none;
+text-align:center;
+}
+
+/* Balloons */
 .balloon{
 position:fixed;
 bottom:-100px;
@@ -170,7 +236,6 @@ border-radius:50%;
 animation:float 10s linear infinite;
 opacity:0.7;
 z-index:-1;
-cursor:pointer;
 }
 @keyframes float{
 from{transform:translateY(0);}
@@ -190,32 +255,10 @@ animation:fall 3s linear forwards;
 0%{transform:translateY(-20px) rotate(0deg);}
 100%{transform:translateY(100vh) rotate(720deg);opacity:0;}
 }
-
-/* Floating Music Panel */
-.music-panel{
-position:fixed;
-bottom:20px;
-right:20px;
-background:rgba(0,0,0,0.6);
-padding:15px;
-border-radius:20px;
-backdrop-filter:blur(10px);
-box-shadow:0 0 20px rgba(255,0,200,0.4);
-z-index:2000;
-text-align:center;
-}
-.music-panel button{
-margin:5px;
-padding:8px 15px;
-font-size:0.8rem;
-}
-
 </style>
 </head>
 
 <body>
-
-<div class="event-banner">✨ OFFICIAL BIRTHDAY CELEBRATION PORTAL ✨</div>
 
 <nav>
 <a href="#home">Home🏠 </a>
@@ -259,65 +302,81 @@ font-size:0.8rem;
 <h2>Secret Message</h2>
 <input type="password" id="pass" placeholder="Enter Code">
 <button onclick="unlock()">Unlock</button>
-<div id="secretMessage">Secret will appear here</div>
-</section>
 
-<!-- MUSIC PANEL -->
-<div class="music-panel">
-<div>🎵 Our Vibe</div>
-<button onclick="toggleMusic()">Play / Pause</button>
+<div id="secretMessage">
+Happiesst Birthday Aishwaryaa ❤️🥰🥳🤩🎉🎊♾️🎁🎈🎂✨<br><br>
+May God Bless you. Enjoy your day and have a blast. Always stay happy and enjoy your special day 😊 May you have everything your heart desires and may happiness always find it's way to youu 🧡<br><br>
+I pray to god ki tu bohot zyada tarakki kare aur aage jaate jaate mujhe bhi yaad rakhe 😂 Abhi se hi bata deta hu ki tu khaas friends mein se ek hai, aur khaas logo ko khaas wish karna toh banta haina ❤️ Mujhe wish karne aata nahi but maine try kiya, isliye bhool chuk maaf 😅😅<br><br>
+My bestest wishes to you ❤️ achche se enjoy kar, stay happy and ofcourse healthy.<br><br>
+Aur bata website kaisi lagi??? mujhe batana haa zaroor ki kaisi lagi, pics bhi sahi select kiya haina (caption ko thoda bhaav mat de 😂). 2 cheezien tujhpe udhaar rahi meri, ek toh birthday party aur ek saree ki pic 🤣🤣🤣 and let me tell you one thing ki dono hi urgently chaiye mujhe 😂😂<br><br>
+Chal ab zyada time waste nahi karta teraa, maze se enjoy kar and haa mujhse roz baat kiya kar 😂😂 (sirf occasionally nahi).<br><br>
+Happiest Birthdayy Once Again 🥳🥳🎉🎉🎊🎊
 </div>
 
-<audio id="bgMusic" loop>
-<source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
-</audio>
+<div id="certificate">
+<div class="cert-title">CERTIFICATE OF ELITE FRIENDSHIP</div>
+<div class="cert-text">
+This prestigious certificate is proudly presented to
+</div>
+<div class="cert-name">AISHWARYAA</div>
+<div class="cert-text">
+In recognition of her unmatched presence, radiant energy,
+genuine heart, and the irreplaceable value she brings into life.
+<br><br>
+Declared officially as:
+<br><br>
+✨ A Rare Soul<br>
+👑 A True Queen of Vibes<br>
+💖 An Exceptional Best Friend<br>
+🌟 A Lifetime Level Personality
+</div>
+<div class="cert-footer">
+Awarded on: <span id="certDate"></span><br>
+Signed with respect & appreciation,<br>
+Gaurang
+</div>
+</div>
+
+</section>
 
 <script>
 
-/* 3D Parallax */
-document.addEventListener("mousemove",e=>{
-let x=(e.clientX/window.innerWidth-0.5)*10;
-let y=(e.clientY/window.innerHeight-0.5)*10;
-document.querySelectorAll("section").forEach(sec=>{
-sec.style.transform=`rotateY(${x}deg) rotateX(${-y}deg)`;
-});
-});
-
-/* Floating Emojis */
-const emojis=["💖","✨","🎉","🌸"];
-for(let i=0;i<20;i++){
-let em=document.createElement("div");
-em.className="floating-emoji";
-em.innerText=emojis[Math.floor(Math.random()*emojis.length)];
-em.style.left=Math.random()*100+"vw";
-em.style.animationDuration=(10+Math.random()*20)+"s";
-document.body.appendChild(em);
-}
-
-/* Balloons with pop */
+/* Balloons */
 function createBalloons(){
-for(let i=0;i<150;i++){
+for(let i=0;i<200;i++){
 let b=document.createElement("div");
 b.classList.add("balloon");
 b.style.left=Math.random()*100+"%";
+b.style.width=(20+Math.random()*40)+"px";
+b.style.height=(30+Math.random()*60)+"px";
 b.style.background="hsl("+Math.random()*360+",80%,60%)";
-b.onclick=function(){b.remove();confettiBurst();};
+b.style.animationDuration=(4+Math.random()*6)+"s";
 document.body.appendChild(b);
 }
 }
 createBalloons();
 
-/* Confetti */
-function confettiBurst(){
-for(let i=0;i<50;i++){
-let c=document.createElement("div");
-c.classList.add("confetti");
-c.style.left=Math.random()*100+"vw";
-c.style.background="hsl("+Math.random()*360+",100%,50%)";
-document.body.appendChild(c);
-setTimeout(()=>c.remove(),3000);
+/* Permanent Fireworks */
+setInterval(()=>{
+for(let i=0;i<80;i++){
+let f=document.createElement("div");
+f.style.position="fixed";
+f.style.left=Math.random()*100+"vw";
+f.style.top=Math.random()*100+"vh";
+f.style.width="5px";
+f.style.height="5px";
+f.style.background="hsl("+Math.random()*360+",100%,50%)";
+f.style.borderRadius="50%";
+f.style.pointerEvents="none";
+f.style.transition="all 1.2s ease-out";
+document.body.appendChild(f);
+setTimeout(()=>{
+f.style.transform=`translate(${(Math.random()-0.5)*400}px, ${(Math.random()-0.5)*400}px)`;
+f.style.opacity="0";
+},20);
+setTimeout(()=>f.remove(),1200);
 }
-}
+},1500);
 
 /* Slider */
 let slideIndex=0;
@@ -331,30 +390,64 @@ setTimeout(showSlides,3000);
 }
 showSlides();
 
-/* Music */
-function toggleMusic(){
-let music=document.getElementById("bgMusic");
-if(music.paused){music.play();}else{music.pause();}
+/* Reveal Reasons */
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+document.querySelectorAll(".reason-card").forEach(card=>{
+observer.observe(card);
+});
+
+/* Unlock */
+function unlock(){
+let value=document.getElementById("pass").value.trim().toUpperCase();
+if(value==="GAURANG"){
+document.getElementById("secretMessage").style.display="block";
+document.getElementById("certificate").style.display="block";
+document.getElementById("certDate").innerText=new Date().toLocaleDateString();
+confettiBurst();
+}
 }
 
-/* Fireworks */
+/* Confetti */
+function confettiBurst(){
+for(let i=0;i<150;i++){
+let c=document.createElement("div");
+c.classList.add("confetti");
+c.style.left=Math.random()*100+"vw";
+c.style.background="hsl("+Math.random()*360+",100%,50%)";
+document.body.appendChild(c);
+setTimeout(()=>c.remove(),3000);
+}
+}
+
+/* Fireworks Explosion */
 function fireworks(){
-for(let i=0;i<200;i++){
-let f=document.createElement("div");
-f.style.position="fixed";
-f.style.left="50%";
-f.style.top="50%";
-f.style.width="6px";
-f.style.height="6px";
-f.style.background="hsl("+Math.random()*360+",100%,50%)";
-f.style.borderRadius="50%";
-f.style.transition="all 1s ease-out";
-document.body.appendChild(f);
+for(let j=0;j<5;j++){
 setTimeout(()=>{
-f.style.transform=`translate(${(Math.random()-0.5)*800}px, ${(Math.random()-0.5)*600}px)`;
-f.style.opacity="0";
+for(let i=0;i<200;i++){
+let burst=document.createElement("div");
+burst.style.position="fixed";
+burst.style.left="50%";
+burst.style.top="50%";
+burst.style.width="6px";
+burst.style.height="6px";
+burst.style.background="hsl("+Math.random()*360+",100%,50%)";
+burst.style.borderRadius="50%";
+burst.style.pointerEvents="none";
+burst.style.transition="all 1s ease-out";
+document.body.appendChild(burst);
+setTimeout(()=>{
+burst.style.transform=`translate(${(Math.random()-0.5)*1000}px, ${(Math.random()-0.5)*800}px)`;
+burst.style.opacity="0";
 },10);
-setTimeout(()=>f.remove(),1000);
+setTimeout(()=>burst.remove(),1000);
+}
+},j*300);
 }
 }
 
