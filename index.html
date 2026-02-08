@@ -143,6 +143,80 @@ backdrop-filter:blur(10px);
 text-align:left;
 }
 
+/* ===== PREMIUM CERTIFICATE ===== */
+
+#certificate{
+display:none;
+margin-top:40px;
+padding:50px 40px;
+max-width:900px;
+background:linear-gradient(145deg,#111,#1c1c1c);
+border-radius:25px;
+position:relative;
+color:#fff;
+text-align:center;
+box-shadow:0 0 60px rgba(255,215,0,0.3);
+overflow:hidden;
+animation:fadeCert 1.2s ease forwards;
+}
+
+@keyframes fadeCert{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+#certificate::before{
+content:"";
+position:absolute;
+inset:0;
+padding:3px;
+border-radius:25px;
+background:linear-gradient(45deg,#ffd700,#fff5b7,#ffd700,#fff5b7);
+background-size:300% 300%;
+animation:goldMove 6s linear infinite;
+-webkit-mask:
+linear-gradient(#000 0 0) content-box,
+linear-gradient(#000 0 0);
+-webkit-mask-composite:xor;
+mask-composite:exclude;
+}
+
+@keyframes goldMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.cert-title{
+font-size:1.8rem;
+letter-spacing:3px;
+color:#ffd700;
+margin-bottom:30px;
+}
+
+.cert-name{
+font-size:2.8rem;
+font-weight:bold;
+background:linear-gradient(90deg,#ffd700,#fff,#ffd700);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin:20px 0;
+}
+
+.cert-text{
+font-size:1.1rem;
+line-height:1.8;
+color:#e0e0e0;
+margin-top:20px;
+}
+
+.cert-footer{
+margin-top:40px;
+font-size:0.9rem;
+opacity:0.7;
+letter-spacing:1px;
+}
+
 input{
 margin-top:15px;
 padding:10px 20px;
@@ -238,6 +312,31 @@ Aur bata website kaisi lagi??? mujhe batana haa zaroor ki kaisi lagi, pics bhi s
 Chal ab zyada time waste nahi karta teraa, maze se enjoy kar and haa mujhse roz baat kiya kar 😂😂 (sirf occasionally nahi).<br><br>
 Happiest Birthdayy Once Again 🥳🥳🎉🎉🎊🎊
 </div>
+
+<div id="certificate">
+<div class="cert-title">CERTIFICATE OF ELITE FRIENDSHIP</div>
+<div class="cert-text">
+This prestigious certificate is proudly presented to
+</div>
+<div class="cert-name">AISHWARYAA</div>
+<div class="cert-text">
+In recognition of her unmatched presence, radiant energy,
+genuine heart, and the irreplaceable value she brings into life.
+<br><br>
+Declared officially as:
+<br><br>
+✨ A Rare Soul<br>
+👑 A True Queen of Vibes<br>
+💖 An Exceptional Best Friend<br>
+🌟 A Lifetime Level Personality
+</div>
+<div class="cert-footer">
+Awarded on: <span id="certDate"></span><br>
+Signed with respect & appreciation,<br>
+Gaurang
+</div>
+</div>
+
 </section>
 
 <script>
@@ -308,6 +407,8 @@ function unlock(){
 let value=document.getElementById("pass").value.trim().toUpperCase();
 if(value==="GAURANG"){
 document.getElementById("secretMessage").style.display="block";
+document.getElementById("certificate").style.display="block";
+document.getElementById("certDate").innerText=new Date().toLocaleDateString();
 confettiBurst();
 }
 }
@@ -354,4 +455,3 @@ setTimeout(()=>burst.remove(),1000);
 
 </body>
 </html>
-
