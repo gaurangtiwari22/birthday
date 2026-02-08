@@ -484,10 +484,14 @@ line-height:1.8;
 
 .fate-grid{
 display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:40px;
-max-width:1200px;
+grid-template-columns:repeat(3, minmax(320px, 1fr));
+gap:60px;
+max-width:1400px;
 margin:auto;
+}
+
+.card{
+height:350px;
 }
 
 .card{
@@ -628,3 +632,4 @@ selectedCard.classList.toggle("flipped");
 
 </body>
 </html>
+
